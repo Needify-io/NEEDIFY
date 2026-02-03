@@ -1,0 +1,915 @@
+<!doctype html>
+<html class="dark scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Needify - On-Demand Local Professionals</title>
+    <link rel="icon" href="/favicon.png" />
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#2badee",
+              "primary-dark": "#0ea5e9",
+              "background-light": "#f8fafc",
+              "background-dark": "#0b1114",
+              "surface-dark": "#162025",
+              "surface-highlight": "#1e2930",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "1.5rem",
+              xl: "2rem",
+              "2xl": "2.5rem",
+              "3xl": "3rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .glass-nav {
+        background: rgba(11, 17, 20, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .glass-card {
+        background: rgba(30, 41, 48, 0.4);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+      }
+      .gradient-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.25;
+        z-index: 0;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #e2e8f0 0%, #2badee 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+  </head>
+  <body
+    class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark text-slate-100 font-display overflow-x-hidden selection:bg-primary/30 selection:text-white"
+  >
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      <div
+        class="gradient-blob bg-blue-500 w-96 h-96 top-[-100px] left-[-100px]"
+      ></div>
+      <div
+        class="gradient-blob bg-teal-500 w-80 h-80 top-[20%] right-[-100px]"
+      ></div>
+      <div
+        class="gradient-blob bg-purple-600 w-64 h-64 bottom-[-50px] left-[20%]"
+      ></div>
+    </div>
+    <div class="sticky top-4 z-50 w-full px-4 flex justify-center">
+      <nav
+        class="glass-nav rounded-full max-w-[1200px] w-full flex items-center justify-between px-6 py-3 shadow-lg shadow-black/20 transition-all duration-300 hover:shadow-black/30 hover:border-white/10"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="size-8 text-primary flex items-center justify-center bg-primary/10 rounded-full border border-primary/20"
+          >
+            <span class="material-symbols-outlined text-[20px]"
+              >all_inclusive</span
+            >
+          </div>
+          <h2 class="text-white text-lg font-bold tracking-tight">Needify</h2>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            class="text-slate-300 hover:text-white text-sm font-medium transition-colors"
+            href="#"
+            >Home</a
+          >
+          <a
+            class="text-slate-300 hover:text-white text-sm font-medium transition-colors"
+            href="#services"
+            >Services</a
+          >
+          <a
+            class="text-slate-300 hover:text-white text-sm font-medium transition-colors"
+            href="#how-it-works"
+            >How It Works</a
+          >
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="signup.html"
+            ><button
+              class="hidden sm:flex cursor-pointer items-center justify-center rounded-full h-9 px-4 hover:bg-white/10 text-slate-200 text-sm font-semibold transition-colors"
+            >
+              Sign Up
+            </button></a
+          >
+          <a href="try.html"
+            ><button
+              class="cursor-pointer flex items-center justify-center rounded-full h-9 px-5 bg-primary hover:bg-primary-dark text-white text-sm font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95"
+            >
+              Try Needify
+            </button></a
+          >
+        </div>
+      </nav>
+    </div>
+    <section class="relative z-10 w-full pt-16 pb-20 md:pt-24 md:pb-32 px-4">
+      <div class="layout-container mx-auto max-w-[1200px]">
+        <div class="@container">
+          <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <div
+              class="flex flex-col gap-6 flex-1 text-center lg:text-left z-10"
+            >
+              <div class="flex flex-col gap-4">
+                <div
+                  class="inline-flex self-center lg:self-start items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm w-fit"
+                >
+                  <span
+                    class="size-2 rounded-full bg-green-400 animate-pulse"
+                  ></span>
+                  <span
+                    class="text-xs font-semibold text-slate-300 uppercase tracking-wider"
+                    >Available in your area</span
+                  >
+                </div>
+                <h1
+                  class="text-white text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight"
+                >
+                  Expert Help for <br />
+                  Every
+                  <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-teal-400"
+                    >Project</span
+                  >.
+                </h1>
+                <p
+                  class="text-slate-400 text-lg md:text-xl font-normal leading-relaxed max-w-[600px] mx-auto lg:mx-0"
+                >
+                  Book trusted local plumbers, electricians, and technicians in
+                  minutes. Reliable service at your fingertips.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                <a href="try.html"
+                  ><button
+                    class="flex items-center justify-center rounded-full h-12 px-8 bg-primary hover:bg-primary-dark text-white text-base font-bold shadow-xl shadow-primary/20 transition-all hover:-translate-y-1"
+                  >
+                    <span class="mr-2">Try Demo</span>
+                    <span class="material-symbols-outlined text-sm"
+                      >arrow_outward</span
+                    >
+                  </button></a
+                >
+                <button
+                  class="flex items-center justify-center rounded-full h-12 px-8 bg-transparent border border-slate-600 hover:border-slate-400 hover:bg-white/5 text-slate-200 text-base font-bold transition-all"
+                >
+                  <span class="mr-2">Become a Pro</span>
+                  <span class="material-symbols-outlined text-sm">work</span>
+                </button>
+              </div>
+              <div
+                class="pt-4 flex items-center justify-center lg:justify-start gap-4 text-sm text-slate-400 font-medium"
+              >
+                <div class="flex -space-x-2">
+                  <div
+                    class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-700 bg-cover"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuABaLJFRf30y7tDOJcTM-H36-O27ReBNzXTH_7f77_sZ33dgu2XES8xwbB0qb3MAmNFvgQJHLsKnFmqExeD5a6UJ8-yV4jIMdntx9X1coAn-FXVETPXetzR0pz-ZpHHxC4xJDK2uLEIrhrW_-DogsiewQybsEUprB5GQpuHocH6YNT_SUCkji1pPJByf3PDZOPEHAOrv8aWTAsNkrx4q24ZNoFnNLIilqEjFVDNEzGJoretH5Mfc64rCD0xbd6nRRf5fi0YGvR_8Hg&quot;);
+                    "
+                  ></div>
+                  <div
+                    class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-700 bg-cover"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCqMzeQKJQUg2wfWSEgof-GS8c2j1a8AeJ7QZH1p9kEGDAQRRGwvRyaQuR3EhtXT1QIe69Tor3_fSgVl5E_xgVkN3FUpPaKfAwm2I0gTfOMxIwG7sSI9uLcUExEzbBXI23bP0gICrhqB1xY4pYXKHA9mKTQ8JCCrv92Py9DIuNTqnGFowHLsx0G5IFQXd9vbqU4zdwhRDT9qO_oR56Wn1JsGdOJarJcrljH1tQ5VdQoAa4df9JqhtlnK-2EkNYzrC9O43w8-_PXP3Y&quot;);
+                    "
+                  ></div>
+                  <div
+                    class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-700 bg-cover"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuB28YJlZVscb3CRNle9xNViSXO43ezEfMhasO9s9lZ8n5BGseMNJqX-94kNsO-YFIriFLXPd3otm-TD551GTm3vtjNZPFgWiNPu12MbqYojKuaKkZAWXxU5xyYZi4bUN09eac0VbD097BysFu9Ug2r1cxbeyC29cA_uueRzUAx2XVnpMtvyDaPsySWkhYXDsesrdml7YuDOGxPge_IaNpPVUTlTECLzYD4Lw-NlAxg2Lt-2lH6HuGPX4f0mOWPvgwCDu9qAnX6Xbog&quot;);
+                    "
+                  ></div>
+                </div>
+                <p>Get a professional for every need.</p>
+              </div>
+            </div>
+            <div class="flex-1 w-full relative z-10 perspective-1000">
+              <div
+                class="relative w-full aspect-[4/3] lg:aspect-square max-w-[600px] mx-auto"
+              >
+                <div
+                  class="absolute inset-0 bg-surface-dark rounded-2xl shadow-2xl border border-white/10 backdrop-blur-xl overflow-hidden transform transition-transform hover:scale-[1.02] duration-500"
+                >
+                  <div
+                    class="h-12 border-b border-white/5 flex items-center px-4 gap-2 bg-white/5"
+                  >
+                    <div class="w-20 h-2 rounded-full bg-slate-700"></div>
+                  </div>
+                  <div class="p-6 flex flex-col gap-4">
+                    <div class="flex justify-between items-center mb-2">
+                      <div class="h-4 w-32 bg-slate-700 rounded-full"></div>
+                      <div class="h-4 w-8 bg-slate-700 rounded-full"></div>
+                    </div>
+                    <div
+                      class="flex gap-4 p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+                    >
+                      <div
+                        class="w-12 h-12 rounded-full bg-slate-600 shrink-0 flex items-center justify-center text-xl"
+                      >
+                        👨‍🔧
+                      </div>
+                      <div class="flex flex-col gap-1 w-full">
+                        <div class="text-[12px]">Anas Hashiru</div>
+                        <div class="h-2 w-16 bg-slate-700 rounded-full"></div>
+                        <div class="mt-2 flex gap-2">
+                          <div
+                            class="h-5 w-16 bg-green-500/20 rounded text-green-400 text-[10px] flex items-center justify-center px-1 font-bold"
+                          >
+                            AVAILABLE
+                          </div>
+                          <div
+                            class="h-5 w-12 bg-slate-700 rounded text-slate-400 text-[10px] flex items-center justify-center px-1"
+                          >
+                            4.9 ★
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex gap-4 p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-pointer opacity-60"
+                    >
+                      <div
+                        class="w-12 h-12 rounded-full bg-slate-600 shrink-0 flex items-center justify-center text-xl"
+                      >
+                        ⚡️
+                      </div>
+                      <div class="flex flex-col gap-1 w-full">
+                        <div
+                          class="h-3 w-32 bg-slate-600 rounded-full mb-1"
+                        ></div>
+                        <div class="h-2 w-20 bg-slate-700 rounded-full"></div>
+                        <div class="mt-2 flex gap-2">
+                          <div
+                            class="h-5 w-12 bg-slate-700 rounded text-slate-400 text-[10px] flex items-center justify-center px-1"
+                          >
+                            4.8 ★
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="absolute bottom-10 -left-4 w-56 bg-surface-highlight backdrop-blur-md p-4 rounded-xl shadow-2xl border border-white/10 transform rotate-[5deg] z-20"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <div
+                          class="p-1.5 bg-green-500/20 text-green-400 rounded-lg"
+                        >
+                          <span class="material-symbols-outlined text-sm"
+                            >check_circle</span
+                          >
+                        </div>
+                        <span class="text-xs font-bold text-slate-200"
+                          >Pro Arriving in 10 min</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2 mt-2">
+                        <div class="w-6 h-6 rounded-full bg-blue-500"></div>
+                        <div
+                          class="h-1.5 w-24 bg-slate-700 rounded-full overflow-hidden"
+                        >
+                          <div class="h-full w-[85%] bg-blue-500"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="relative z-10 py-16 px-4 bg-surface-dark border-y border-white/5"
+    >
+      <div class="max-w-[1200px] mx-auto">
+        <div class="flex flex-col gap-10">
+          <div class="flex flex-col gap-4 text-center max-w-[720px] mx-auto">
+            <h2
+              class="text-white text-3xl md:text-4xl font-bold leading-tight tracking-tight"
+            >
+              Trusted Experts for Every Job
+            </h2>
+            <p class="text-slate-400 text-lg font-medium leading-normal">
+              From leaky faucets to full electrical rewiring, find the right
+              professional for your specific needs.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="glass-card flex flex-col items-start gap-4 p-6 rounded-2xl hover:bg-white/5 hover:translate-y-[-4px] transition-all duration-300 group"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-[28px]"
+                  >plumbing</span
+                >
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-white text-lg font-bold">Plumbing</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                  Leaks, drains, and pipe installations handled by licensed
+                  plumbers.
+                </p>
+              </div>
+            </div>
+            <div
+              class="glass-card flex flex-col items-start gap-4 p-6 rounded-2xl hover:bg-white/5 hover:translate-y-[-4px] transition-all duration-300 group"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center text-yellow-400 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-[28px]"
+                  >electrical_services</span
+                >
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-white text-lg font-bold">Electrical</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                  Safety inspections, wiring, and repairs by certified
+                  electricians.
+                </p>
+              </div>
+            </div>
+            <div
+              class="glass-card flex flex-col items-start gap-4 p-6 rounded-2xl hover:bg-white/5 hover:translate-y-[-4px] transition-all duration-300 group"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-[28px]">build</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-white text-lg font-bold">General Repair</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                  Furniture assembly, mounting, and general home repairs.
+                </p>
+              </div>
+            </div>
+            <div
+              class="glass-card flex flex-col items-start gap-4 p-6 rounded-2xl hover:bg-white/5 hover:translate-y-[-4px] transition-all duration-300 group"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-teal-500/20 flex items-center justify-center text-teal-400 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-[28px]">hvac</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-white text-lg font-bold">HVAC</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                  Heating, ventilation, and air conditioning maintenance.
+                </p>
+              </div>
+            </div>
+            <div
+              class="glass-card flex flex-col items-start gap-4 p-6 rounded-2xl hover:bg-white/5 hover:translate-y-[-4px] transition-all duration-300 group"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-teal-500/20 flex items-center justify-center text-teal-400 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-[28px]"
+                  >car_repair</span
+                >
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-white text-lg font-bold">Car repairs</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                  Car checkes, fixes and maintainance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="relative z-10 py-20 px-4" id="services">
+      <div class="max-w-[1200px] mx-auto flex flex-col gap-12">
+        <div class="flex flex-col gap-3 text-center md:text-left">
+          <span class="text-primary font-bold tracking-wide uppercase text-sm"
+            >The Needify Standard</span
+          >
+          <h2
+            class="text-white text-3xl md:text-4xl font-bold leading-tight tracking-tight"
+          >
+            Why homeowners love us
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="group flex flex-col gap-4 p-6 rounded-2xl bg-surface-highlight border border-white/5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+          >
+            <div
+              class="w-10 h-10 rounded-lg bg-background-dark border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors"
+            >
+              <span class="material-symbols-outlined">verified_user</span>
+            </div>
+            <div>
+              <h3 class="text-white text-lg font-bold mb-1">
+                Vetted Professionals
+              </h3>
+              <p class="text-slate-400 text-sm">
+                Every pro undergoes strict background checks and skill
+                assessments.
+              </p>
+            </div>
+          </div>
+          <div
+            class="group flex flex-col gap-4 p-6 rounded-2xl bg-surface-highlight border border-white/5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+          >
+            <div
+              class="w-10 h-10 rounded-lg bg-background-dark border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors"
+            >
+              <span class="material-symbols-outlined">schedule</span>
+            </div>
+            <div>
+              <h3 class="text-white text-lg font-bold mb-1">Instant Booking</h3>
+              <p class="text-slate-400 text-sm">
+                Book a same-day appointment or schedule for a time that works
+                for you.
+              </p>
+            </div>
+          </div>
+          <div
+            class="group flex flex-col gap-4 p-6 rounded-2xl bg-surface-highlight border border-white/5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+          >
+            <div
+              class="w-10 h-10 rounded-lg bg-background-dark border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors"
+            >
+              <span class="material-symbols-outlined">payments</span>
+            </div>
+            <div>
+              <h3 class="text-white text-lg font-bold mb-1">Upfront Pricing</h3>
+              <p class="text-slate-400 text-sm">
+                See the price before you book. No hidden fees or surprise
+                charges.
+              </p>
+            </div>
+          </div>
+          <div
+            class="group flex flex-col gap-4 p-6 rounded-2xl bg-surface-highlight border border-white/5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+          >
+            <div
+              class="w-10 h-10 rounded-lg bg-background-dark border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors"
+            >
+              <span class="material-symbols-outlined">support_agent</span>
+            </div>
+            <div>
+              <h3 class="text-white text-lg font-bold mb-1">24/7 Support</h3>
+              <p class="text-slate-400 text-sm">
+                Our support team is always available to help with your bookings.
+              </p>
+            </div>
+          </div>
+          <div
+            class="group flex flex-col gap-4 p-6 rounded-2xl bg-surface-highlight border border-white/5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+          >
+            <div
+              class="w-10 h-10 rounded-lg bg-background-dark border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors"
+            >
+              <span class="material-symbols-outlined">shield</span>
+            </div>
+            <div>
+              <h3 class="text-white text-lg font-bold mb-1">
+                Service Guarantee
+              </h3>
+              <p class="text-slate-400 text-sm">
+                Not happy? We'll make it right. Your satisfaction is our
+                priority.
+              </p>
+            </div>
+          </div>
+          <div
+            class="group flex flex-col gap-4 p-6 rounded-2xl bg-surface-highlight border border-white/5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+          >
+            <div
+              class="w-10 h-10 rounded-lg bg-background-dark border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-primary group-hover:text-white transition-colors"
+            >
+              <span class="material-symbols-outlined">smartphone</span>
+            </div>
+            <div>
+              <h3 class="text-white text-lg font-bold mb-1">
+                Real-time Tracking
+              </h3>
+              <p class="text-slate-400 text-sm">
+                Track your professional's arrival time and rout directly in the
+                app.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="relative z-10 py-20 px-4 bg-white/5" id="how-it-works">
+      <div class="max-w-[1200px] mx-auto flex flex-col items-center">
+        <div class="mb-16 text-center max-w-[600px]">
+          <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">
+            How Needify Works
+          </h2>
+          <p class="text-slate-400">
+            Get the help you need in three simple steps.
+          </p>
+        </div>
+        <div
+          class="relative w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4"
+        >
+          <div
+            class="hidden md:block absolute top-8 left-[16%] right-[16%] h-[2px] bg-white/10 z-0"
+          ></div>
+          <div
+            class="relative flex flex-col items-center text-center gap-6 z-10"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-surface-highlight border-4 border-background-dark shadow-lg flex items-center justify-center text-primary text-xl font-bold relative"
+            >
+              1
+              <div
+                class="absolute -bottom-2 -right-2 bg-primary text-white p-1 rounded-full"
+              >
+                <span class="material-symbols-outlined text-sm">search</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-bold text-white">Select a Service</h3>
+              <p class="text-sm text-slate-400 max-w-[250px] mx-auto">
+                Browse categories and choose the professional help you need.
+              </p>
+            </div>
+          </div>
+          <div
+            class="relative flex flex-col items-center text-center gap-6 z-10"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-surface-highlight border-4 border-background-dark shadow-lg flex items-center justify-center text-primary text-xl font-bold relative"
+            >
+              2
+              <div
+                class="absolute -bottom-2 -right-2 bg-purple-500 text-white p-1 rounded-full"
+              >
+                <span class="material-symbols-outlined text-sm"
+                  >calendar_month</span
+                >
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-bold text-white">Book Instantly</h3>
+              <p class="text-sm text-slate-400 max-w-[250px] mx-auto">
+                Choose a time slot that works for you and see pricing upfront.
+              </p>
+            </div>
+          </div>
+          <div
+            class="relative flex flex-col items-center text-center gap-6 z-10"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-surface-highlight border-4 border-background-dark shadow-lg flex items-center justify-center text-primary text-xl font-bold relative"
+            >
+              3
+              <div
+                class="absolute -bottom-2 -right-2 bg-teal-500 text-white p-1 rounded-full"
+              >
+                <span class="material-symbols-outlined text-sm"
+                  >check_circle</span
+                >
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-bold text-white">Job Done</h3>
+              <p class="text-sm text-slate-400 max-w-[250px] mx-auto">
+                Your pro arrives on time, completes the job, and you pay
+                securely.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="relative z-10 py-20 px-4">
+      <div class="max-w-[1200px] mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-12 text-white">
+          What our customers say
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="glass-card p-6 rounded-2xl border border-white/5 shadow-sm flex flex-col gap-4"
+          >
+            <div class="flex gap-1 text-yellow-400">
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              "My kitchen sink started leaking on a Sunday. I booked a plumber
+              through Needify and he was there in 2 hours. Lifesaver!"
+            </p>
+            <div class="flex items-center gap-3 mt-auto pt-2">
+              <div
+                class="w-8 h-8 rounded-full bg-slate-700 bg-cover"
+                style="
+                  background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuC7v6pi-GRcAFA23hQCEkdrxFpFuSPjOKzKbxebUfIK3ZMWP-TdPfqJjg9c_kRNtogw-ZxujL3DUGUWKyfg3jIHbBXtpC1RijdSKuvRl1FFssPs-ASHQjvUYeRMi8W4p7oQk8Cx2d6ZGtiUeZlelh_Nh9IOAFsF8w26LSkZ7J8fd_NZznjPzL2UOKo5bKvZC5O3ke632AeP_iwoZl9PLaNfbSe3qjW3wVmaDMVZ1idnzdWcKAqjhsSh-md5BYmRQw0-GyXJla4oj1s&quot;);
+                "
+              ></div>
+              <div>
+                <p class="text-sm font-bold text-white">Sarah Jenkins</p>
+                <p class="text-xs text-slate-500">Homeowner</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="glass-card p-6 rounded-2xl border border-white/5 shadow-sm flex flex-col gap-4"
+          >
+            <div class="flex gap-1 text-yellow-400">
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              "As a busy professional, I don't have time to call around for
+              quotes. Needify made getting my AC fixed incredibly simple."
+            </p>
+            <div class="flex items-center gap-3 mt-auto pt-2">
+              <div
+                class="w-8 h-8 rounded-full bg-slate-700 bg-cover"
+                style="
+                  background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDCn4fERO7uVdT6i2TCdIo0uv7eBtwkS9b6GgPgjwFUEToM-_IN8DvLIPyNNl0PpmOsdTbkFfcy13XOvV-np8x99KXBbUSFQQo2XzMnEQde3pxx17V275d7_S1kFI5nnQaikU4FI5vy96OoSF0z9iG_X-G36eWJQU4nvsN2bxSJ-ikkjuCDGyhbPPe-bxkHUPBe8_88d7QIpZw9PMZAfIS-JUQ--l_Nqj_Tzoky9_rtKo-BfA7TGIiftU7s-OVSU4p--TpDiZELYY4&quot;);
+                "
+              ></div>
+              <div>
+                <p class="text-sm font-bold text-white">Mark Chen</p>
+                <p class="text-xs text-slate-500">San Francisco, CA</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="glass-card p-6 rounded-2xl border border-white/5 shadow-sm flex flex-col gap-4"
+          >
+            <div class="flex gap-1 text-yellow-400">
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+              <span class="material-symbols-outlined text-sm fill-current"
+                >star</span
+              >
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              "The electrician was professional, on time, and did a great job
+              installing our new lighting fixtures. Highly recommend."
+            </p>
+            <div class="flex items-center gap-3 mt-auto pt-2">
+              <div
+                class="w-8 h-8 rounded-full bg-slate-700 bg-cover"
+                style="
+                  background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDI_QSzTB_4Jv9zwOKLXBp40QaXFRPEHDH6Wa5XaetWQRxMoqOWn8IaWzAnhCJOLL9Ya1BtC6gmZaLran0mOqP9Pns6Ybe2YhAJMYCWwlPV8_G5Bd2lPNDfjHrvMEiLFp3RetTcDs7INtaynfrbldseIuBbAwVnoi1N-DSz369edISX9BP7A1TpNBbdTL7DAIb97v7SPSjxKvA_VwJDWUmaE_1w8ptXHjk2gFYaAA3YD2WHjvU22GjAL6na1ZOVW21B0DzW8R8cpww&quot;);
+                "
+              ></div>
+              <div>
+                <p class="text-sm font-bold text-white">Emily Rodriguez</p>
+                <p class="text-xs text-slate-500">Business Owner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="relative z-10 py-20 px-4">
+      <div
+        class="max-w-[1000px] mx-auto relative rounded-3xl overflow-hidden bg-gradient-to-br from-surface-highlight to-background-dark border border-white/10 shadow-2xl"
+      >
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px]"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-[80px]"
+        ></div>
+        <div
+          class="relative z-10 flex flex-col items-center text-center gap-8 py-20 px-6"
+        >
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">
+            Ready to fix it?
+          </h2>
+          <p class="text-slate-300 text-lg max-w-[500px]">
+            Join our community of happy homeowners and get your to-do list done
+            today.
+          </p>
+          <div class="flex flex-col items-center gap-3">
+            <button
+              class="flex items-center justify-center rounded-full h-14 px-10 bg-primary hover:bg-white hover:text-primary text-white hover:text-slate-900 text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-xl shadow-primary/20"
+            >
+              Find a Pro Now
+            </button>
+            <span class="text-xs text-slate-500 font-medium"
+              >Verified Professionals. 100% Satisfaction Guarantee.</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="relative z-10 pt-16 pb-8 px-4 bg-background-dark border-t border-white/5"
+    >
+      <div class="max-w-[1200px] mx-auto flex flex-col gap-12">
+        <div class="flex flex-col md:flex-row justify-between gap-10">
+          <div class="flex flex-col gap-4 max-w-[300px]">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[24px]"
+                >all_inclusive</span
+              >
+              <h2 class="text-white text-lg font-bold">Needify</h2>
+            </div>
+            <p class="text-slate-500 text-sm">
+              The easiest way to book local professionals for home services and
+              repairs any where you are.
+            </p>
+          </div>
+          <div class="flex gap-16 flex-wrap">
+            <div class="flex flex-col gap-4">
+              <h3 class="text-white font-bold text-sm">Services</h3>
+              <div class="flex flex-col gap-2">
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Plumbing</a
+                >
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Electrical</a
+                >
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Heating &amp; Cooling</a
+                >
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Handyman</a
+                >
+              </div>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h3 class="text-white font-bold text-sm">Company</h3>
+              <div class="flex flex-col gap-2">
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >About Us</a
+                >
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Become a Pro</a
+                >
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Careers</a
+                >
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Blog</a
+                >
+              </div>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h3 class="text-white font-bold text-sm">Support</h3>
+              <div class="flex flex-col gap-2">
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Help Center</a
+                >
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Safety</a
+                >
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Terms of Service</a
+                >
+                <a
+                  class="text-slate-500 hover:text-primary text-sm transition-colors"
+                  href="#"
+                  >Privacy Policy</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4"
+        >
+          <p class="text-slate-600 text-sm">
+            © 2026 Needify Inc. All rights reserved.
+          </p>
+          <div class="flex gap-4">
+            <a
+              class="text-slate-500 hover:text-primary transition-colors"
+              href="https://x.com/Needify_io"
+            >
+              <span class="sr-only">Twitter</span>
+              <svg
+                aria-hidden="true"
+                class="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="text-slate-500 hover:text-primary transition-colors"
+              href="https://www.instagram.com/needify.io?igsh=MWZoeG53ZDU1cjhiZg=="
+            >
+              <span class="sr-only">Instagram</span>
+              <svg
+                aria-hidden="true"
+                class="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.37c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                  fill-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Needify - Sign In</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2badee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101c22",
+                        "surface-dark": "#1c262c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-white/10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-primary">
+                <div class="size-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-xl">all_inclusive</span>
+                </div>
+                <h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">Needify</h2>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <span class="hidden md:block text-sm text-slate-500 dark:text-slate-400">New to Needify?</span>
+                <a class="px-5 py-2 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-sm font-semibold transition-all" href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center p-4 md:p-8 relative overflow-hidden">
+        <!-- Abstract Background Blobs -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-500/10 rounded-full blur-[120px]"></div>
+        </div>
+        
+        <div class="w-full max-w-6xl z-10 grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left Side: Hero Text -->
+            <div class="hidden md:flex flex-col gap-6 pr-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    <span class="text-xs font-medium text-primary uppercase tracking-wider">Welcome Back</span>
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-white">
+                    Your problems,<br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">solved instantly.</span>
+                </h1>
+                <p class="text-lg text-slate-400 max-w-md leading-relaxed">
+                    Sign in to access your account and connect with trusted professionals in your area.
+                </p>
+                <div class="flex gap-4 mt-4">
+                    <div class="flex -space-x-3">
+                        <img alt="User avatar" class="w-10 h-10 rounded-full border-2 border-background-dark object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQFNA2wNumqVdeLBD9jTPGUZoblN68lzm2Iv6kgbC3zK243ycwQHZT-9nIQe2bjWQii1wuNN9Uf9hqrRqQIFRkyCbG8Ol5LFqXIzR8thDCjBK_aABZM6gXmmlx74o-PqN8xv0Zl6vtBXyG8Ap6tKRvFAtNr8seu-OZqK93BWXD1XrtVfLUPGX52NTVx13dfqqto-oj1d5JBrtGkstPC9damXV_--QoVWQ8rAnuTudjGmeoilGDDBGxlg4OBod8XPwgTWZZe3QzUiU"/>
+                        <img alt="User avatar" class="w-10 h-10 rounded-full border-2 border-background-dark object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWiOxg4TXKaW1oAmQF9LLJjnhN1qcwRIjlmmikHa5c-OGTQOZsBb6wqcMFVi9zIr3CJ-vat3aAcWso7GdjqGRotnf1HXGDVKmyFz_WWFIu8wzGbzIshHlsReVk6-h5FNx-66NGN1Cf0dDr660x8IKnn6R0MqElfwAx3l_FfvT26LQ3xeMEOV45Qe7jyx58Q6mg15eYLB_m0-uMijSRYWSqfF-9ocINKMl6bLVlb8Dv8KkN583kiQYQ3lSaf3xwxuW-ox19FreZnhM"/>
+                        <img alt="User avatar" class="w-10 h-10 rounded-full border-2 border-background-dark object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw0uVTv7Eiv4QlDtTO1i1Nt0JsyGCTHsYqLeFolkBIm_k7qGUcnzKwKjP_xyUYOnoqylA9Vj1f7RGZAegy8LZd01QFnpiwfzru49RtBUBC5oIe3CFLOim9esz_YbF1k9vAEbve50MbPS1dzkHp1f2aAl4gPp5PY6ke8yg3qADHXbPGLjIBjWD0C_1_YF7xlccWGhvpWH15Ik_RvTnAZg2NZaOWB_jgEmh39AXlI9GEdhfIVbeqT7v-rHW44nbGSAWUyXIxguEXo2o"/>
+                        <div class="w-10 h-10 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-xs font-bold text-white">+2k</div>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <div class="flex text-yellow-500 text-sm">
+                            <span class="material-symbols-outlined text-[16px] fill">star</span>
+                            <span class="material-symbols-outlined text-[16px] fill">star</span>
+                            <span class="material-symbols-outlined text-[16px] fill">star</span>
+                            <span class="material-symbols-outlined text-[16px] fill">star</span>
+                            <span class="material-symbols-outlined text-[16px] fill">star</span>
+                        </div>
+                        <span class="text-xs text-slate-400">Join thousands of satisfied users</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Sign In Form -->
+            <div class="w-full max-w-[480px] mx-auto md:ml-auto">
+                <div class="bg-white/5 dark:bg-surface-dark/60 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl relative overflow-hidden group">
+                    <!-- Subtle shimmer effect -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    
+                    <div class="text-center mb-8 relative z-10">
+                        <h2 class="text-2xl font-bold text-white mb-2">Welcome back</h2>
+                        <p class="text-slate-400 text-sm">Sign in to your Needify account.</p>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div id="error-message" class="hidden mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm relative z-10"></div>
+
+                    <form id="signin-form" class="space-y-4 relative z-10">
+                        <!-- Email -->
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-medium text-slate-300 ml-1">Email Address</label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-[20px]">mail</span>
+                                <input id="email" class="w-full h-11 pl-10 pr-4 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm" placeholder="jane@example.com" type="email" required/>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="space-y-1.5">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <label class="text-xs font-medium text-slate-300 ml-1">Password</label>
+                                <a href="#" class="text-xs text-primary hover:underline">Forgot password?</a>
+                            </div>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-[20px]">lock</span>
+                                <input id="password" class="w-full h-11 pl-10 pr-10 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm" placeholder="••••••••" type="password" required/>
+                                <button id="toggle-password" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors" type="button">
+                                    <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Remember Me -->
+                        <div class="flex items-center gap-3 py-2">
+                            <div class="flex h-5 items-center">
+                                <input id="remember" class="h-4 w-4 rounded border-slate-700 bg-slate-900 text-primary focus:ring-primary focus:ring-offset-slate-900" type="checkbox"/>
+                            </div>
+                            <label class="text-xs text-slate-400 leading-snug" for="remember">
+                                Remember me for 30 days
+                            </label>
+                        </div>
+
+                        <button id="signin-btn" type="submit" class="w-full h-12 bg-primary hover:bg-sky-400 text-white font-bold rounded-lg shadow-lg shadow-primary/25 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                            <span id="btn-text">Sign In</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </form>
+
+
+                    <div class="mt-6 text-center relative z-10">
+                        <p class="text-sm text-slate-400">
+                            Don't have an account? <a class="text-primary font-semibold hover:underline" href="signup.html">Sign Up</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Trust Badge -->
+                <div class="mt-6 flex flex-col items-center gap-4 text-center">
+                    <div class="flex items-center gap-2 text-slate-500 text-xs">
+                        <span class="material-symbols-outlined text-sm">lock</span>
+                        <span>Your data is encrypted & secure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-slate-800 bg-background-dark/50 py-6">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>© 2026 Needify Inc. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a class="hover:text-slate-300 transition-colors" href="#">Privacy Policy</a>
+                <a class="hover:text-slate-300 transition-colors" href="#">Terms of Service</a>
+                <a class="hover:text-slate-300 transition-colors" href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Clerk SDK -->
+    <script
+        async
+        crossorigin="anonymous"
+        data-clerk-publishable-key="pk_test_bmF0aW9uYWwtc2x1Zy0zLmNsZXJrLmFjY291bnRzLmRldiQ"
+        src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    ></script>
+
+    <script>
+        let clerk;
+
+        // Initialize Clerk
+        async function initClerk() {
+            try {
+                while (!window.Clerk) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+
+                const clerkPubKey = document.querySelector('[data-clerk-publishable-key]')
+                    .getAttribute('data-clerk-publishable-key');
+
+                await window.Clerk.load({ publishableKey: clerkPubKey });
+                clerk = window.Clerk;
+
+                // Check if user is already signed in
+                if (clerk.user) {
+                    window.location.href = 'dashboard.html';
+                }
+            } catch (error) {
+                console.error('Clerk init error:', error);
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+            setTimeout(() => errorDiv.classList.add('hidden'), 5000);
+        }
+
+        // Password visibility toggle
+        document.getElementById('toggle-password').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('.material-symbols-outlined');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.textContent = 'visibility';
+            } else {
+                passwordInput.type = 'password';
+                icon.textContent = 'visibility_off';
+            }
+        });
+
+        // Handle Email/Password Sign In
+        document.getElementById('signin-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const btn = document.getElementById('signin-btn');
+            const btnText = document.getElementById('btn-text');
+
+            try {
+                btn.disabled = true;
+                btnText.textContent = 'Signing in...';
+
+                // Sign in with Clerk
+                await clerk.client.signIn.create({
+                    identifier: email,
+                    password: password,
+                });
+
+                // Set the session as active
+                await clerk.setActive({
+                    session: clerk.client.signIn.createdSessionId
+                });
+
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+
+            } catch (error) {
+                showError(error.errors?.[0]?.message || 'Invalid email or password.');
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = 'Sign In';
+            }
+        });
+
+
+
+        // Initialize on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initClerk);
+        } else {
+            initClerk();
+        }
+    </script>
+</body>
+</html>
